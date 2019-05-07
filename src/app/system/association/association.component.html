@@ -1,0 +1,25 @@
+<div class="association">
+  <div class="association__i">
+    <h1 class="association__title">Мнемоника</h1>
+    <div class="association__start" *ngIf="process === 0">
+      <label for="category" class="association__label"></label>
+      <select name="category" id="category" class="association__dropdown" [(ngModel)]="currentCat">
+        <option value="-1" class="association__option">Все слова</option>
+        <option *ngFor="let cat of categories" value="{{ cat.id }}" class="association__option">{{ cat.name }}</option>
+      </select>
+      <div class="association__btn-to-start" (click)="goLearn()">Начать</div>
+    </div>
+    <div class="association__work" *ngIf="process === 1">
+      <div class="association__card">
+        <img src="{{ urlPicture }}" class="association__card_img">
+        <input type="text" class="association__card_input" [(ngModel)]="answer">
+        <div class="association__card_btn" (click)="nextWord()">Ответить</div>
+      </div>
+    </div>
+    <div class="association__end" *ngIf="process === 2">
+      <h2 class="association__caption">Результат</h2>
+      <p class="association__text">Количество правильных слов: {{ colLearned }}/{{ neededWords.length }}</p>
+      <p class="association__text">Процент правильных слов: {{ colLearned / neededWords.length * 100}}%</p>
+    </div>
+  </div>
+</div>

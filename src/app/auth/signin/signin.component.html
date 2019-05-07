@@ -1,0 +1,18 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="login__form">
+  <div class="login__group">
+    <label for="email" class="login__label">Username</label>
+    <input [ngClass]="{'login__input_error':form.get('email').invalid && form.get('email').touched}" type="text" class="login__input" id="email" placeholder="Email" formControlName="email">
+    <span *ngIf="form.get('email').invalid && form.get('email').touched" class="login__error">Email can not be empty and without . or @</span>
+  </div>
+  <div class="login__group">
+    <label for="password" class="login__label">Password</label>
+    <input [ngClass]="{'login__input_error':form.get('password').invalid && form.get('password').touched}" type="password" class="login__input" id="password" placeholder="Password" formControlName="password">
+    <span *ngIf="form.get('password').invalid && form.get('password').touched" class="login__error">Password must be more than 6 symbols and not empty</span>
+  </div>
+  <div class="login__group">
+    <button type="submit" class="login__btn">Entry</button>
+  </div>
+  <div class="login__group">
+    <p class="login__text"> You do not have account? <a routerLink="/auth/signup" class="login__link">Registration!</a></p>
+  </div>
+</form>

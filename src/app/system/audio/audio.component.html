@@ -1,0 +1,25 @@
+<div class="audio">
+  <div class="audio__i">
+    <h1 class="audio__title">Аудио</h1>
+    <div class="audio__start" *ngIf="process === 0">
+      <label for="category" class="audio__label"></label>
+      <select name="category" id="category" class="audio__dropdown" [(ngModel)]="currentCat">
+        <option value="-1" class="audio__option">Все слова</option>
+        <option *ngFor="let cat of categories" value="{{ cat.id }}" class="audio__option">{{ cat.name }}</option>
+      </select>
+      <div class="audio__btn-to-start" (click)="goLearn()">Начать</div>
+    </div>
+    <div class="audio__work" *ngIf="process === 1">
+      <div class="audio__card">
+        <div class="audio__card_listen" (click)="listenTo()">Прослушать</div>
+        <input type="text" class="audio__card_input" [(ngModel)]="answer">
+        <div class="audio__card_btn" (click)="nextWord()">Ответить</div>
+      </div>
+    </div>
+    <div class="audio__end" *ngIf="process === 2">
+      <h2 class="audio__caption">Результат</h2>
+      <p class="audio__text">Количество правильных слов: {{ colLearned }}/{{ neededWords.length }}</p>
+      <p class="audio__text">Процент правильных слов: {{ colLearned / neededWords.length * 100}}%</p>
+    </div>
+  </div>
+</div>

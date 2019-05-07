@@ -1,0 +1,57 @@
+<div class="dict">
+  <h1 class="dict__title">Словарь</h1>
+  <div class="dict__i">
+    <div class="dict__choice">
+      <label for="categories" class="dict__label"></label>
+      <select name="categories" id="categories" class="dict__select" [(ngModel)]="currentCategory" (ngModelChange)="changeCategory()">
+        <option value="-1" class="dict__option">Все слова</option>
+        <option *ngFor="let cat of categories" value="{{cat.id}}" class="dict__option">{{cat.name}}</option>
+      </select>
+    </div>
+    <div class="dict__add-cat">
+      <label for="cat" class="dict__label">Доабвить категорию</label>
+      <input type="text" id="cat" class="dict__input_cat" [(ngModel)]="addingCat">
+      <div class="dict__btn-add-cat" (click)="addCategory()">Сохранить</div>
+    </div>
+    <div class="dict__list">
+      <table class="dict__table">
+        <tr class="dict__row">
+          <td class="dict__td_caption">Слово оригинал</td>
+          <td class="dict__td_caption">Слово перевод</td>
+          <td class="dict__td_caption">
+            Действия
+          </td>
+        </tr>
+        <tr class="dict__row" *ngFor="let word of neededWords, let i = index">
+          <td class="dict__td">
+            <input type="text" class="dict__input" [(ngModel)]="words[i].word_or" [disabled]="changedWord[i]">
+          </td>
+          <td class="dict__td">
+            <input type="text" class="dict__input" [(ngModel)]="words[i].word_tr" [disabled]="changedWord[i]">
+          </td>
+          <td class="dict__td">
+            <span (click)="changeWord(i)" *ngIf="changedWord[i]">Изменить</span>
+            <span (click)="saveWord(i)" *ngIf="!changedWord[i]">Сохранить</span>
+            <span (click)="deleteWord(i)">Удалить</span>
+          </td>
+        </tr>
+        <tr class="dict__row" *ngIf="currentCategory != -1">
+          <td class="dict__td" *ngIf="!addingWord">
+            <div class="dict_btn" (click)="wantAddWord()">Добавить слово</div>
+          </td>
+        </tr>
+        <tr *ngIf="addingWord" class="dict__row" ngFor="let word of neededWords, let i = index">
+          <td class="dict__td">
+            <input type="text" class="dict__input" [(ngModel)]="word_or">
+          </td>
+          <td class="dict__td">
+            <input type="text" class="dict__input" [(ngModel)]="word_tr">
+          </td>
+          <td class="dict__td">
+            <span (click)="addWord()" *ngIf="!changedWord[i]">Сохранить</span>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

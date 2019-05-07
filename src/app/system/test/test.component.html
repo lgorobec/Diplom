@@ -1,0 +1,48 @@
+<div class="test">
+  <div class="test__i">
+    <div class="test__start" *ngIf="process === 0">
+      <div class="test__start_button" (click)="goTest()">Начать тест</div>
+    </div>
+    <div class="test__work" *ngIf="process === 1">
+      <div class="test__ticks">
+        <span>{{index+1}}/9</span>
+      </div>
+      <div class="test__title">{{ needed_questions[index].question }}</div>
+      <div class="test_quest test_quest__non-eyes" *ngIf="needed_questions[index].id_methodic != 2">
+        <div class="test_quest_first-part" *ngIf="is_answering === 0">
+          <img *ngIf="needed_questions[index].id_methodic != 3" src="../../../assets/img/{{needed_questions[index].src}}" alt="" class="test__img">
+          <div class="test__audio-btn" *ngIf="needed_questions[index].id_methodic === 3" (click)="listenTo()">Прослушать</div>
+          <div class="test__next" (click)="nextPart()">Дальше</div>
+        </div>
+        <div class="test_quest_second-part" *ngIf="is_answering != 0">
+          <div class="box-list test_quest__list" cdkDropList (cdkDropListDropped)="drop($event)">
+            <div class="drag-box" *ngFor="let witem of words_sort" cdkDrag>
+              {{witem}}
+            </div>
+          </div>
+          <div class="test__next" (click)="nextQuest()">Дальше</div>
+        </div>
+      </div>
+      <div class="test_quest test_quest__eyes" *ngIf="needed_questions[index].id_methodic === 2">
+        <div class="test_quest_first-part" *ngIf="is_answering === 0">
+          <div class="test__timer">
+            <span>0:{{ 15 - ticks }}</span>
+          </div>
+          <img src="../../../assets/img/{{needed_questions[index].src}}" alt="" class="test__img">
+          <div class="test__next" (click)="nextPart()">Дальше</div>
+        </div>
+        <div class="test_quest_second-part" *ngIf="is_answering != 0">
+          <div class="test__answering" *ngFor="let word of needed_questions[index].words, let i = index">
+            <h4 class="test__caption" *ngIf="i%2 === 0">{{word}}</h4>
+            <input type="text" class="test__input" [(ngModel)] = "test_result[i/2]" *ngIf="i%2 === 0">
+          </div>
+          <div class="test__next" (click)="nextQuest()">Дальше</div>
+        </div>
+      </div>
+    </div>
+    <div class="test__end" *ngIf="process === 2">
+      <h4 class="test__result" *ngIf="metod !== null">Поздравляем с прохождением теста! Больше всего Вам подходит методика {{ metod.name }}</h4>
+      <h4 class="test__result" *ngIf="metod === null">К сожалению, тесту не удалось подобрать для Вас подходящую методику. Рекомендуем попробовать Вам методику Карточки.</h4>
+    </div>
+  </div>
+</div>

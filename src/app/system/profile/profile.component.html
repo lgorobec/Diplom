@@ -1,0 +1,46 @@
+<div class="profile">
+  <div class="profile__i">
+    <h1 class="profile__title">Профиль</h1>
+    <div class="profile__settings">
+      <div class="profile__group">
+        <label for="name" class="profile__label">Имя</label>
+        <input type="text" id="name" class="profile__input" [(ngModel)]="name">
+      </div>
+      <div class="profile__group">
+        <label for="email" class="profile__label">E-mail</label>
+        <input type="text" id="email" class="profile__input" [(ngModel)]="email">
+      </div>
+      <div class="profile__group">
+        <label for="password" class="profile__label">Пароль</label>
+        <input type="password" id="password" class="profile__input" [(ngModel)]="password">
+      </div>
+      <div class="profile__btn" (click)="saveSettings()">Сохранить</div>
+    </div>
+    <div class="profile__chart">
+      <h3 class="profile__caption">Статистика выученных слов</h3>
+      <div class="chart profile__chart">
+        <canvas baseChart
+                [data]="pieChartData"
+                [labels]="pieChartLabels"
+                [chartType]="pieChartType"
+                [options]="pieChartOptions"
+                [colors]="pieChartColors"
+                [legend]="pieChartLegend">
+        </canvas>
+      </div>
+    </div>
+    <div class="profile__chart">
+      <h3 class="profile__caption">Статистика пройденных тестов</h3>
+      <div class="chart profile__chart">
+        <canvas baseChart
+                [data]="pieChartData2"
+                [labels]="pieChartLabels2"
+                [chartType]="pieChartType2"
+                [options]="pieChartOptions2"
+                [colors]="pieChartColors2"
+                [legend]="pieChartLegend2">
+        </canvas>
+      </div>
+    </div>
+  </div>
+</div>

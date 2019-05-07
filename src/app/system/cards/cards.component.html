@@ -1,0 +1,25 @@
+<div class="cards">
+  <div class="cards__i">
+    <h1 class="cards__title">Карточки</h1>
+    <div class="cards__start" *ngIf="process === 0">
+      <label for="category" class="cards__label"></label>
+      <select name="category" id="category" class="cards__dropdown" [(ngModel)]="currentCat">
+        <option value="-1" class="cards__option">Все слова</option>
+        <option *ngFor="let cat of categories" value="{{ cat.id }}" class="cards__option">{{ cat.name }}</option>
+      </select>
+      <div class="cards__btn-to-start" (click)="goLearn()">Начать</div>
+    </div>
+    <div class="cards__work" *ngIf="process === 1">
+      <div class="cards__card">
+        <h4 class="cards__card_title">{{ neededWords[index].word_or }}</h4>
+        <input type="text" class="cards__card_input" [(ngModel)]="answer">
+        <div class="cards__card_btn" (click)="nextWord()">Ответить</div>
+      </div>
+    </div>
+    <div class="cards__end" *ngIf="process === 2">
+      <h2 class="cards__caption">Результат</h2>
+      <p class="cards__text">Количество правильных слов: {{ colLearned }}/{{ neededWords.length }}</p>
+      <p class="cards__text">Процент правильных слов: {{ colLearned / neededWords.length * 100}}%</p>
+    </div>
+  </div>
+</div>
