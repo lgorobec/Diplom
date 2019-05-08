@@ -3,7 +3,7 @@
     {
       "email": "mestek170297@gmail.com",
       "password": "ljhjuf",
-      "date": "2019-05-07T20:53:15.297Z",
+      "date": "2019-05-08T09:33:05.133Z",
       "name": "Лариса",
       "id": 1
     }
@@ -54,11 +54,11 @@
       "id_user": 1,
       "word_or": "love",
       "word_tr": "любовь",
-      "is_learned": 1,
+      "is_learned": 2,
       "id": 2
     },
     {
-      "id_category": "1",
+      "id_category": 1,
       "id_user": 1,
       "word_or": "ocean",
       "word_tr": "океан",
@@ -66,11 +66,11 @@
       "id": 3
     },
     {
-      "id_category": "1",
+      "id_category": 1,
       "id_user": 1,
       "word_or": "mountains",
       "word_tr": "горы",
-      "is_learned": 0,
+      "is_learned": 1,
       "id": 4
     }
   ],

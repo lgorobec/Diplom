@@ -1,7 +1,7 @@
 export class Test {
-  constructor (
+  constructor(
     public id_user: number,
-    public id_methodics: number,
+    public id_methodic: number,
     public date: Date,
     public id?: number
   ) { }

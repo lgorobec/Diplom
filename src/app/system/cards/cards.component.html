@@ -2,7 +2,7 @@
   <div class="cards__i">
     <h1 class="cards__title">Карточки</h1>
     <div class="cards__start" *ngIf="process === 0">
-      <label for="category" class="cards__label"></label>
+      <label for="category" class="cards__label">Категория</label>
       <select name="category" id="category" class="cards__dropdown" [(ngModel)]="currentCat">
         <option value="-1" class="cards__option">Все слова</option>
         <option *ngFor="let cat of categories" value="{{ cat.id }}" class="cards__option">{{ cat.name }}</option>

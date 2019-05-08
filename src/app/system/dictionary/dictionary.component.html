@@ -2,22 +2,22 @@
   <h1 class="dict__title">Словарь</h1>
   <div class="dict__i">
     <div class="dict__choice">
-      <label for="categories" class="dict__label"></label>
+      <label for="categories" class="dict__label">Категория</label>
       <select name="categories" id="categories" class="dict__select" [(ngModel)]="currentCategory" (ngModelChange)="changeCategory()">
         <option value="-1" class="dict__option">Все слова</option>
         <option *ngFor="let cat of categories" value="{{cat.id}}" class="dict__option">{{cat.name}}</option>
       </select>
     </div>
     <div class="dict__add-cat">
-      <label for="cat" class="dict__label">Доабвить категорию</label>
+      <label for="cat" class="dict__label">Добавить категорию</label>
       <input type="text" id="cat" class="dict__input_cat" [(ngModel)]="addingCat">
       <div class="dict__btn-add-cat" (click)="addCategory()">Сохранить</div>
     </div>
     <div class="dict__list">
       <table class="dict__table">
         <tr class="dict__row">
-          <td class="dict__td_caption">Слово оригинал</td>
-          <td class="dict__td_caption">Слово перевод</td>
+          <td class="dict__td_caption" (click)="sort(1)">Слово оригинал</td>
+          <td class="dict__td_caption" (click)="sort(2)">Слово перевод</td>
           <td class="dict__td_caption">
             Действия
           </td>
@@ -30,13 +30,13 @@
             <input type="text" class="dict__input" [(ngModel)]="words[i].word_tr" [disabled]="changedWord[i]">
           </td>
           <td class="dict__td">
-            <span (click)="changeWord(i)" *ngIf="changedWord[i]">Изменить</span>
-            <span (click)="saveWord(i)" *ngIf="!changedWord[i]">Сохранить</span>
-            <span (click)="deleteWord(i)">Удалить</span>
+            <span (click)="changeWord(i)" *ngIf="changedWord[i]"><i class="fas fa-edit"></i></span>
+            <span (click)="saveWord(i)" *ngIf="!changedWord[i]"><i class="far fa-save"></i></span>
+            <span (click)="deleteWord(i)"><i class="fas fa-trash-alt"></i></span>
           </td>
         </tr>
-        <tr class="dict__row" *ngIf="currentCategory != -1">
-          <td class="dict__td" *ngIf="!addingWord">
+        <tr class="dict__row" *ngIf="currentCategory != -1" >
+          <td class="dict__td" *ngIf="!addingWord" colspan="3" style="padding: 0; border-right: none">
             <div class="dict_btn" (click)="wantAddWord()">Добавить слово</div>
           </td>
         </tr>
@@ -48,7 +48,8 @@
             <input type="text" class="dict__input" [(ngModel)]="word_tr">
           </td>
           <td class="dict__td">
-            <span (click)="addWord()" *ngIf="!changedWord[i]">Сохранить</span>
+            <span (click)="addWord()"><i class="far fa-save"></i></span>
+            <span (click)="addingWord = !addingWord"><i class="fas fa-trash-alt"></i></span>
           </td>
         </tr>
       </table>

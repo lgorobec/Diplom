@@ -4,6 +4,7 @@ import {Category} from '../../shared/models/category.model';
 import {Word} from '../../shared/models/word.model';
 import {ArrayType} from '@angular/compiler';
 import {WordService} from '../shared/services/word.service';
+import {toNumbers} from '@angular/compiler-cli/src/diagnostics/typescript_version';
 
 @Component({
   selector: 'app-dictionary',
@@ -74,21 +75,24 @@ export class DictionaryComponent implements OnInit {
   }
 
   addWord() {
-    const wd = new Word(this.currentCategory,
-                        this.neededWords[0].id_user,
-                        this.word_or,
-                        this.word_tr,
-                        0);
-    this.wordService.addWord(wd).subscribe((data: Word) => {
-      if (data) {
-        this.neededWords.push(data);
-        this.words.push(data);
-        this.changedWord.push(true);
-        this.addingWord = false;
-        this.word_tr = '';
-        this.word_or = '';
-      }
-    });
+    if (this.word_or !== '' && this.word_tr !== '')
+    {
+      const wd = new Word(+this.currentCategory,
+        this.neededWords[0].id_user,
+        this.word_or,
+        this.word_tr,
+        0);
+      this.wordService.addWord(wd).subscribe((data: Word) => {
+        if (data) {
+          this.neededWords.push(data);
+          this.words.push(data);
+          this.changedWord.push(true);
+          this.addingWord = false;
+          this.word_tr = '';
+          this.word_or = '';
+        }
+      });
+    }
   }
 
   wantAddWord() {
@@ -116,14 +120,36 @@ export class DictionaryComponent implements OnInit {
   }
 
   addCategory() {
-    const category = new Category(this.neededWords[0].id_user, this.addingCat, this.neededWords[0].id_user);
-    this.categoryService.addCategory(category).subscribe((data: Category) => {
-      if (data) {
-        this.categories.push(data);
-        this.currentCategory = data.id;
-        this.addingCat = '';
-        this.changeCategory();
-      }
-    });
+    if (this.addingCat != '') {
+      const category = new Category(this.neededWords[0].id_user, this.addingCat, this.neededWords[0].id_user);
+      this.categoryService.addCategory(category).subscribe((data: Category) => {
+        if (data) {
+          this.categories.push(data);
+          this.currentCategory = data.id;
+          this.addingCat = '';
+          this.changeCategory();
+        }
+      });
+    }
+  }
+
+  sortWordsOr(prev, next) {
+    if ( prev.word_or < next.word_or ) return -1;
+    if ( prev.word_or > next.word_or ) return 1;
+  }
+
+  sortWordsTr(prev, next) {
+    if ( prev.word_tr < next.word_tr ) return -1;
+    if ( prev.word_tr > next.word_tr ) return 1;
+  }
+
+  sort(n) {
+    if (n === 1) {
+      this.neededWords.sort(this.sortWordsOr);
+      this.words.sort(this.sortWordsOr);
+    } else {
+      this.neededWords.sort(this.sortWordsTr);
+      this.words.sort(this.sortWordsTr);
+    }
   }
 }

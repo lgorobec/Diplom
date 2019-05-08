@@ -11,6 +11,8 @@ import {Router} from '@angular/router';
 })
 export class SystemComponent implements OnInit {
 
+  is_open_menu = false;
+
   constructor(private userService: UsersService,
               private testService: TestService,
               private router: Router) { }
@@ -24,4 +26,7 @@ export class SystemComponent implements OnInit {
     });
   }
 
+  onChanged(event) {
+    this.is_open_menu = event;
+  }
 }

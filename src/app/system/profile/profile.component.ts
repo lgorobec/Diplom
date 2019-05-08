@@ -18,7 +18,7 @@ export class ProfileComponent implements OnInit {
   public pieChartOptions: ChartOptions = {
     responsive: true,
     legend: {
-      position: 'left',
+      position: 'top',
     }
   };
   public pieChartLabels: Label[] = ['Количество выученных слов', 'Количество не выученных слов'];
@@ -34,7 +34,7 @@ export class ProfileComponent implements OnInit {
   public pieChartOptions2: ChartOptions = {
     responsive: true,
     legend: {
-      position: 'left',
+      position: 'top',
     }
   };
   public pieChartLabels2: Label[] = ['Мнемоника', 'Карточки', 'Аудио'];

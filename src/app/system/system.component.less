@@ -1,0 +1,41 @@
+@import '../../assets/css/_media';
+
+.system {
+  min-height: 100vh;
+  display: flex;
+
+  &__header {
+    margin: 10px 20px;
+  }
+
+  &__i {
+    width: 75%;
+    border-radius: 0 70px 70px 0;
+    background: url('../../assets/img/bg.jpg') center no-repeat;
+    background-size: cover;
+    transition: all .3s;
+
+    @media @tablet-max-width {
+      width: 20%;
+      overflow: hidden;
+    }
+
+    &_close {
+      width: calc(~'100% - 50px');
+      border-radius: 0;
+    }
+  }
+
+  &__menu {
+    width: 25%;
+    transition: all .3s;
+
+    @media @tablet-max-width {
+      width: 80%;
+    }
+
+    &_close {
+      width: 50px;
+    }
+  }
+}

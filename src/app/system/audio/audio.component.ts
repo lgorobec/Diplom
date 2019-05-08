@@ -73,6 +73,7 @@ export class AudioComponent implements OnInit {
     } else {
       this.process = 2;
     }
+    this.answer = '';
   }
 
   listenTo() {

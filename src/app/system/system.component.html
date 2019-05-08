@@ -1,13 +1,13 @@
 <div class="system">
-  <div class="system__header">
-    <app-header></app-header>
-  </div>
-  <div class="system_i">
-    <div class="system__menu">
-      <app-menu></app-menu>
+  <div class="system__i" [ngClass]="{'system__i_close': !is_open_menu}">
+    <div class="system__header">
+      <app-header></app-header>
     </div>
     <div class="system__workspace">
       <router-outlet></router-outlet>
     </div>
+  </div>
+  <div class="system__menu" [ngClass]="{'system__menu_close': !is_open_menu}">
+    <app-menu (onChanged)="onChanged($event)"></app-menu>
   </div>
 </div>

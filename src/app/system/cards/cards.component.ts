@@ -73,6 +73,7 @@ export class CardsComponent implements OnInit {
     } else {
       this.process = 2;
     }
+    this.answer = '';
   }
 
 }

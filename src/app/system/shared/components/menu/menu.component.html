@@ -1,26 +1,27 @@
 <div class="menu">
+  <i class="fas fa-bars" (click)="clickMenu()"></i>
   <div class="menu__i">
-    <div class="menu__logo">
+    <div class="menu__logo" [ngClass]="{'menu__close': !is_open_menu}">
       <img src="../../../../../assets/img/lotus-logo-png.png" alt="" class="menu__img">
     </div>
-    <ul class="menu__list">
+    <ul class="menu__list" [ngClass]="{'menu__close': !is_open_menu}">
       <li class="menu__item">
-        <span [routerLink]="'profile'" routerLinkActive="menu__link_active" class="menu__link">Профиль</span>
+        <span [routerLink]="'profile'" routerLinkActive="menu__link_active" class="menu__link" (click)="clickMenu()">Профиль</span>
       </li>
       <li class="menu__item">
-        <span [routerLink]="'cards'" routerLinkActive="menu__link_active" class="menu__link">Карточки</span>
+        <span [routerLink]="'cards'" routerLinkActive="menu__link_active" class="menu__link" (click)="clickMenu()">Карточки</span>
       </li>
       <li class="menu__item">
-        <span [routerLink]="'association'" routerLinkActive="menu__link_active" class="menu__link">Мнемоника</span>
+        <span [routerLink]="'association'" routerLinkActive="menu__link_active" class="menu__link" (click)="clickMenu()">Мнемоника</span>
       </li>
       <li class="menu__item">
-        <span [routerLink]="'audio'" routerLinkActive="menu__link_active" class="menu__link">Аудио</span>
+        <span [routerLink]="'audio'" routerLinkActive="menu__link_active" class="menu__link" (click)="clickMenu()">Аудио</span>
       </li>
       <li class="menu__item">
-        <span [routerLink]="'dictionary'" routerLinkActive="menu__link_active" class="menu__link">Словарь</span>
+        <span [routerLink]="'dictionary'" routerLinkActive="menu__link_active" class="menu__link" (click)="clickMenu()">Словарь</span>
       </li>
       <li class="menu__item">
-        <span [routerLink]="'test'" routerLinkActive="menu__link_active" class="menu__link">Тестирование</span>
+        <span [routerLink]="'test'" routerLinkActive="menu__link_active" class="menu__link" (click)="clickMenu()">Тестирование</span>
       </li>
       <li class="menu__item">
         <span class="menu__link" (click)="LogOut()">Выход</span>

@@ -1,0 +1,136 @@
+.dict {
+  height: 100%;
+
+  &__i {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    flex-flow: row wrap;
+    margin: 20px 40px;
+  }
+
+  &__title {
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    margin: 20px 0;
+  }
+
+  &__choice {
+    width: 100%;
+  }
+
+  &__label {
+    color: #fff;
+    font-size: 18px;
+    margin-right: 20px;
+    text-transform: uppercase;
+  }
+
+  &__select {
+    width: 150px;
+  }
+
+  &__add-cat {
+    width: 100%;
+    margin: 20px 0;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+  }
+
+  &__input_cat {
+    border: none;
+    outline: none;
+    box-shadow: none;
+    width: 150px;
+    padding: 5px;
+    color: #333;
+    font-size: 16px;
+    border-radius: 5px;
+  }
+
+  &__btn-add-cat {
+    text-transform: uppercase;
+    width: 100px;
+    margin: 20px 40px;
+    padding: 10px;
+    border-radius: 10px;
+    background: #b100b4;
+    color: #fff;
+    cursor: pointer;
+    transition: all .3s;
+
+    &:hover {
+      background: #820085;
+    }
+  }
+
+  &__list {
+    background: #fff;
+    padding: 30px;
+    border-radius: 30px;
+    width: 100%;
+    overflow-x: scroll;
+  }
+
+  &__table {
+    border: 1px solid #820085;
+    width: 100%;
+    border-spacing: 0 0;
+
+    & td {
+      border-right: 1px solid #820085;
+      border-bottom: 1px solid #820085;
+
+      &:last-child {
+        border-bottom: 1px solid #820085;
+        border-right: none;
+      }
+    }
+
+    & tr:last-child td {
+      border-right: 1px solid #820085;
+      border-bottom: none;
+    }
+
+    td {
+      padding: 10px;
+      text-align: center;
+      font-size: 20px;
+    }
+  }
+
+  &__input {
+    border: none;
+    outline: none;
+    box-shadow: none;
+    font-size: 20px;
+    font-family: "Cormorant Garamond", sans-serif;
+  }
+
+  &__td {
+    span {
+      margin: 5px;
+      cursor: pointer;
+    }
+  }
+
+  &_btn {
+    padding: 10px;
+    cursor: pointer;
+    text-transform: uppercase;
+  }
+}
+
+.fa-edit {
+  color: green;
+}
+
+.fa-trash-alt {
+  color: red;
+}
+
+.fa-save {
+  color: green;
+}
