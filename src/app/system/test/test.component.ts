@@ -6,6 +6,7 @@ import {Question} from '../../shared/models/question.model';
 import {Methodic} from '../../shared/models/methodic.model';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { angularMath } from 'angular-ts-math';
+import {Test} from '../../shared/models/test.model';
 
 @Component({
   selector: 'app-test',
@@ -153,6 +154,9 @@ export class TestComponent implements OnInit {
     if (this.result3 === 0 && this.result1 === 0 && this.result2 === 0) {
       this.metod = null;
     }
+    const user = JSON.parse(window.localStorage.getItem('user'));
+    const test = new Test(user.id, this.metod.id, new Date());
+    this.testService.addTest(test).subscribe(() => {});
   }
 
   drop(event: CdkDragDrop<string[]>) {

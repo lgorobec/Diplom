@@ -15,4 +15,8 @@ export class TestService extends BaseApi {
     const user = JSON.parse(window.localStorage.getItem('user'));
     return this.get(`tests?id_user=${user.id}`);
   }
+
+  addTest(test: Test): Observable <Test> {
+    return this.post('tests', test);
+}
 }

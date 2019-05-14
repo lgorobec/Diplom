@@ -1,5 +1,5 @@
 export class AuthService {
-  constructor () {
+  constructor() {
 
   }
   public isAuthorated = false;

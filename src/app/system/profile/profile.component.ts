@@ -75,15 +75,15 @@ export class ProfileComponent implements OnInit {
         let col2 = 0;
         let col3 = 0;
         for (let i = 0; i < data.length; i++) {
-          if (data[i].id_methodic === 1) {
+          if (data[i].id_methodic == 1) {
             col1 += 1;
-          } else if (data[i].id_methodic === 2) {
+          } else if (data[i].id_methodic == 2) {
             col2 += 1;
           } else {
             col3 += 1;
           }
         }
-        this.pieChartData2 = [col1, col2, col3];
+        this.pieChartData2 = [col3, col2, col1];
       } else {
         this.pieChartData2 = [0, 0, 0];
       }
