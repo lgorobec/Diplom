@@ -17,6 +17,6 @@ export class TestService extends BaseApi {
   }
 
   addTest(test: Test): Observable <Test> {
-    return this.post('tests', test);
-}
+    return this.post('test', test);
+  }
 }
