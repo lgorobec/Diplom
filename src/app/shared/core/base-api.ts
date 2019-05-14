@@ -1,10 +1,11 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable()
 export class BaseApi {
-  private baseUrl = 'http://localhost:3000/';
+  private baseUrl = 'http://diplom.loc/';
+  private token = document.querySelector('meta[name=csrf-token]').getAttribute('content');
 
   constructor(public http: HttpClient) {}
 
@@ -17,18 +18,26 @@ export class BaseApi {
   }
 
   public post(url: string = '', data: any = {}): Observable<any> {
-    return this.http.post(this.getUrl(url), data);
+    return this.http.post(this.getUrl(url), data, this.getToken());
   }
 
   public put(url: string = '', data: any = {}): Observable<any > {
-    return this.http.put(this.getUrl(url), data);
+    return this.http.put(this.getUrl(url), data, this.getToken());
   }
 
   public delete(url: string = ''): Observable<any> {
-    return this.http.delete(this.getUrl(url));
+    return this.http.delete(this.getUrl(url), this.getToken());
   }
 
   public getPic(url: string = ''): Observable<any> {
     return this.http.get(url);
+  }
+
+  private getToken() {
+      return {
+          headers: new HttpHeaders({
+              'X-CSRF-TOKEN': this.token
+          })
+      };
   }
 }

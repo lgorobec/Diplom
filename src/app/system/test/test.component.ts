@@ -38,6 +38,9 @@ export class TestComponent implements OnInit {
     this.questionService.getAllQuestions().subscribe((quests: Question[]) => {
       if (quests.length > 0) {
         this.all_questions = quests;
+        for (let i = 0; i < this.all_questions.length; i++) {
+          this.all_questions[i].words = JSON.parse(this.all_questions[i].words);
+        }
         this.all_questions.sort(this.compareRandom);
         this.needed_questions = this.all_questions.slice(0, 9);
       }

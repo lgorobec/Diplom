@@ -5,6 +5,8 @@ import {Word} from '../../shared/models/word.model';
 import {ArrayType} from '@angular/compiler';
 import {WordService} from '../shared/services/word.service';
 import {toNumbers} from '@angular/compiler-cli/src/diagnostics/typescript_version';
+import {DictionaryService} from "../../shared/services/dictionary.service";
+import {Dictionary} from "../../shared/models/dictionary.model";
 
 @Component({
   selector: 'app-dictionary',
@@ -24,7 +26,8 @@ export class DictionaryComponent implements OnInit {
   addingCat = '';
 
   constructor(private categoryService: CategoryService,
-              private wordService: WordService) { }
+              private wordService: WordService,
+              private dicService: DictionaryService) { }
 
   ngOnInit() {
     this.categoryService.getAllCategoriesByUser().subscribe((cats: Category[]) => {
@@ -77,8 +80,9 @@ export class DictionaryComponent implements OnInit {
   addWord() {
     if (this.word_or !== '' && this.word_tr !== '')
     {
+      const user = JSON.parse(window.localStorage.getItem('user'));
       const wd = new Word(+this.currentCategory,
-        this.neededWords[0].id_user,
+        user.id,
         this.word_or,
         this.word_tr,
         0);
@@ -121,13 +125,18 @@ export class DictionaryComponent implements OnInit {
 
   addCategory() {
     if (this.addingCat != '') {
-      const category = new Category(this.neededWords[0].id_user, this.addingCat, this.neededWords[0].id_user);
-      this.categoryService.addCategory(category).subscribe((data: Category) => {
-        if (data) {
-          this.categories.push(data);
-          this.currentCategory = data.id;
-          this.addingCat = '';
-          this.changeCategory();
+      const user = JSON.parse(window.localStorage.getItem('user'));
+      this.dicService.getDictionaryByUser(user.id).subscribe((dic: Dictionary) => {
+        if (dic) {
+            const category = new Category(dic.id, this.addingCat, user.id);
+            this.categoryService.addCategory(category).subscribe((data: Category) => {
+                if (data) {
+                    this.categories.push(data);
+                    this.currentCategory = data.id;
+                    this.addingCat = '';
+                    this.changeCategory();
+                }
+            });
         }
       });
     }

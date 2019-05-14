@@ -61,7 +61,7 @@ export class CardsComponent implements OnInit {
                                this.neededWords[this.index].id_user,
                                this.neededWords[this.index].word_or,
                                this.neededWords[this.index].word_tr,
-                     this.neededWords[this.index].is_learned + 1);
+                     + this.neededWords[this.index].is_learned + 1);
       this.wordsService.updateWord(this.neededWords[this.index].id, wordNew).subscribe((data: Word) => {
         if (data) {
           this.colLearned += 1;

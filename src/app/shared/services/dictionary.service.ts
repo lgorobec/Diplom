@@ -15,4 +15,8 @@ export class DictionaryService extends BaseApi {
     return this.post('dictionary', dic);
   }
 
+  getDictionaryByUser(id_user: number): Observable <Dictionary> {
+    return this.get(`dictionary?id_user=${id_user}`);
+  }
+
 }

@@ -10,7 +10,7 @@
       <div class="test__title">{{ needed_questions[index].question }}</div>
       <div class="test_quest test_quest__non-eyes" *ngIf="needed_questions[index].id_methodic != 2">
         <div class="test_quest_first-part" *ngIf="is_answering === 0">
-          <img *ngIf="needed_questions[index].id_methodic != 3" src="../../../assets/img/{{needed_questions[index].src}}" alt="" class="test__img">
+          <img *ngIf="needed_questions[index].id_methodic != 3" src="../../../js/assets/img/{{needed_questions[index].src}}" alt="" class="test__img">
           <div class="test__audio-btn" *ngIf="needed_questions[index].id_methodic === 3" (click)="listenTo()">Прослушать</div>
           <div class="test__next" (click)="nextPart()">Дальше</div>
         </div>
@@ -28,7 +28,7 @@
           <div class="test__timer">
             <span>0:{{ 15 - ticks }}</span>
           </div>
-          <img src="../../../assets/img/{{needed_questions[index].src}}" alt="" class="test__img">
+          <img src="../../../js/assets/img/{{needed_questions[index].src}}" alt="" class="test__img">
           <div class="test__next" (click)="nextPart()">Дальше</div>
         </div>
         <div class="test_quest_second-part" *ngIf="is_answering != 0">
