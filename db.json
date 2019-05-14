@@ -46,7 +46,7 @@
       "id_user": 1,
       "word_or": "adventures",
       "word_tr": "приключения",
-      "is_learned": 3,
+      "is_learned": 5,
       "id": 1
     },
     {
@@ -54,7 +54,7 @@
       "id_user": 1,
       "word_or": "love",
       "word_tr": "любовь",
-      "is_learned": 2,
+      "is_learned": 4,
       "id": 2
     },
     {
@@ -62,7 +62,7 @@
       "id_user": 1,
       "word_or": "ocean",
       "word_tr": "океан",
-      "is_learned": 0,
+      "is_learned": 1,
       "id": 3
     },
     {
@@ -70,7 +70,7 @@
       "id_user": 1,
       "word_or": "mountains",
       "word_tr": "горы",
-      "is_learned": 1,
+      "is_learned": 2,
       "id": 4
     }
   ],
@@ -91,9 +91,21 @@
   "tests": [
     {
       "id_user": 1,
-      "id_metodic": 1,
+      "id_methodic": 1,
       "date": null,
       "id": 1
+    },
+    {
+      "id_user": 1,
+      "id_methodic": 3,
+      "date": "2019-05-10T08:38:57.587Z",
+      "id": 2
+    },
+    {
+      "id_user": 1,
+      "id_methodic": 1,
+      "date": "2019-05-13T09:28:27.586Z",
+      "id": 3
     }
   ],
   "questions": [
